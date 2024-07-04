@@ -6,31 +6,32 @@ environment {
     GIT_TOKEN = credentials(‘git-token’)
 }
 
-Stages{
+stages{
    stage(‘Git checkout’) {
            steps{
-                 git “”
+                 git “https://${GIT_TOKEN}@github.com/shruthinb/gcp-tf-jenkins.git"
+
              }
      }
     stage(’Terraform Init’){
-            Steps{
-                    Script{
-                     Sh ‘terraform init’
+            steps{
+                    script{
+                     sh ‘terraform init’
                     }
                }
        }
       stage(’Terraform Plan’){
-            Steps{
-                    Script{
-                     Sh ‘terraform plan -out=tfplan’
+            steps{
+                    script{
+                     sh ‘terraform plan -out=tfplan’
                     }
                }
        }
 
       stage(’Terraform Apply’){
-            Steps{
-                    Script{
-                     Sh ‘terraform apply tfplan’
+            steps{
+                    script{
+                     sh ‘terraform apply tfplan’
                     }
                }
        }

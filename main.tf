@@ -1,6 +1,12 @@
-provider "google" {
-  region = "us-east1"
+terraform {
+  required_providers {
+    github = {
+      source  = "integrations/github"
+      version = "~> 6.0"
+    }
+  }
 }
+
 
 resource "google-storage-bucket" "my-bucket"{
 name = "githubdemo-bucket"

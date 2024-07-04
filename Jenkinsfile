@@ -7,7 +7,7 @@ pipeline{
     }
 
     stages{
-         stage(‘Git checkout’) {
+         stage(‘Git Checkout’) {
             steps {
                  git “https://${GIT_TOKEN}@github.com/shruthinb/gcp-tf-jenkins.git"
             }

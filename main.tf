@@ -3,13 +3,20 @@
   }
 
 terraform {
+  required_version = "~> 1.2"
   required_providers {
-    google= {
+    google = {
       source = "hashicorp/google"
-      version = "4.60.0"
+      version = "4.40.0"
+    }
+
+    google-beta = {
+      source = "hashicorp/google-beta"
+      version = "4.40.0"
     }
   }
 }
+
 
 
 resource "google-storage-bucket" "my-bucket"{

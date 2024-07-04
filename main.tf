@@ -5,7 +5,6 @@ terraform {
       version = "~> 4.0.0"
     }
   }
-}
 
 
 resource "google-storage-bucket" "my-bucket"{
@@ -14,4 +13,5 @@ project = "myfirstproject"
 location = "US"
 forcedestroy = true
 public_access_prevention = "enforced"
+}
 }

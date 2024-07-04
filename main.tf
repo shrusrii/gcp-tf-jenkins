@@ -2,6 +2,14 @@
      region = "us-central1"
   }
 
+terraform {
+  required_providers {
+    google= {
+      source = "hashicorp/google"
+      version = "4.60.0"
+    }
+  }
+}
 
 
 resource "google-storage-bucket" "my-bucket"{

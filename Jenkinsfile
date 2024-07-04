@@ -1,39 +1,43 @@
 pipeline{
     agent any
 
-environment {
-    GOOGLE_APPLICATION_CREDENTIALS = credentials(‘gcp-key’)
-    GIT_TOKEN = credentials(‘git-token’)
-}
+    environment {
+        GOOGLE_APPLICATION_CREDENTIALS = credentials(‘gcp-key’)
+        GIT_TOKEN = credentials(‘git-token’)
+    }
 
-stages{
-   stage(‘Git checkout’) {
-           steps{
+    stages{
+         stage(‘Git checkout’) {
+            steps {
                  git “https://${GIT_TOKEN}@github.com/shruthinb/gcp-tf-jenkins.git"
-
-             }
-     }
-    stage(’Terraform Init’){
+            }
+         }
+         stage(’Terraform Init’){
             steps{
-                    script{
+                script {
                      sh ‘terraform init’
+                }
+            }
+       }
+      stage(’Terraform Plan’){
+          steps{
+              script{
+                  sh ‘terraform plan -out=tfplan’
                     }
                }
        }
-      stage(’Terraform Plan’){
-            steps{
-                    script{
-                     sh ‘terraform plan -out=tfplan’
-                    }
-               }
+       stage(’Manual Approval’){
+          steps{
+            input "Approve?"
+          }
        }
 
       stage(’Terraform Apply’){
             steps{
-                    script{
+                script{
                      sh ‘terraform apply tfplan’
-                    }
-               }
+                      }
+            }
        }
-}
+    }
 }

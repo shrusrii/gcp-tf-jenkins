@@ -1,5 +1,5 @@
-  provider {
-region      = "us-central1"
+  provider "google" {
+     region = "us-central1"
   }
 
 

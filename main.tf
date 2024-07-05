@@ -7,6 +7,6 @@ resource "google_storage_bucket" "my-bucket"{
 name = "sr-githubdemo-bucket"
 project = "bionic-trilogy-428106-h5"
 location = "US"
-forcedestroy = true
+force_destroy = true
 public_access_prevention = "enforced"
 }

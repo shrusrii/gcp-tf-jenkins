@@ -3,7 +3,7 @@ provider "google" {
 }
 
 
-resource "google-storage-bucket" "my-bucket"{
+resource "google_storage_bucket" "my-bucket"{
 name = "sr-githubdemo-bucket"
 project = "bionic-trilogy-428106-h5"
 location = "US"

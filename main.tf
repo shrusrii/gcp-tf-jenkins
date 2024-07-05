@@ -1,5 +1,5 @@
 resource "google-storage-bucket" "my-bucket"{
-name = "githubdemo-bucket"
+name = "sr-githubdemo-bucket"
 project = "myfirstproject"
 location = "US"
 forcedestroy = true

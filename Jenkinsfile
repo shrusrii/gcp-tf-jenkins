@@ -17,7 +17,6 @@ pipeline {
         stage('Terraform Init') {
             steps {
                 script {
-		terraform init -upgrade
 	            sh 'terraform --version'
                     sh 'terraform init'
                 }
